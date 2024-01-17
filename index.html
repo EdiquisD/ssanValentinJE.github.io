@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<meta >
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Valentin- Esmelida</title>
+  <head>
+    <style>
+      body {
+        background-image: url(i\ lov\ u_page-0001.jpg);
+        background-size: cover;
+        height: 100vh;
+      }
+      
+      button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1em 2em;
+        border-radius: 5px;
+        background-color: pink;
+        color: white;
+        font-size: 1.2em;
+        cursor: pointer;
+        border: none;
+      }
+      
+      .message {
+        display: block;
+        position: absolute;
+        top: calc(50% + 50px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1em;
+        background-color: rgba(216, 130, 130, 0.7);
+        color: black;
+        font-size: 1.2em;
+        border-radius: 5px;
+        text-align: center;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="showMessage">TE QUIERO</button>
+    <div id="messagesContainer"></div>
+    
+    <script>
+      const button = document.querySelector('#showMessage');
+      const messagesContainer = document.querySelector('#messagesContainer');
+      const messages = [
+        "No creo en la magia, debe haber algún truco en tus ojos",
+        "Gracias por regalarme pedacitos de tu tiempo",
+        "Es incomparable lo que siento por tí",
+        "Qué bonito tenerte cerca",
+        "Mi sueño es estar entre tus brazos",
+        "Me fascina que existas",
+        "Es mágia haberte conocido",
+        "Tus ojos tienen la luz que le hace falta a mi alma",
+        "Mi corazón estalla por tu amor",
+        "Quiero ser poeta y decirte a la cara que me gustas un poco o, mejor, con locura",
+        "No te canses de mi, nunca",
+        "Si fueras un sueño, serías el mejor de todos",
+        "Si quieres ser mi estrella, prometo ser tu cielo",
+         "He hecho de tu sonrisa un refugio",
+         "Tus ojos están como para perderse en ellos",
+         "La vida está llena de cosas bonitas, por ejemplo tú",
+         "No es lo que siento por ti, es lo que no siento por nadie más",
+         "Me flipa darte la mano y la energía que se crea",
+         "Si tú eres feliz, yo me alegro por ti",
+         "Tu sonrisa es luz para mí",
+         "Querer es una palabra muy débil para describir lo que siento",
+         "Tú no sabes el desorden de emociones que me provoca tu sonrisa",
+         "Nada se puede comparar con el sentimiento que tengo hacia ti",
+         "Si supieras cuánto te pienso, me denunciarías por acoso mental",
+         "Nunca dejes de sonreír, ni siquiera cuando estés triste",
+         "Te quiero como quieren los patos: Patolavida",
+        ];
+        
+      
+      let currentMessageIndex = 0;
+      
+      button.addEventListener('click', function() {
+        if (messagesContainer.childNodes.length > 0) {
+          messagesContainer.removeChild(messagesContainer.childNodes[0]);
+        } else {
+          const messageDiv = document.createElement('div');
+          messageDiv.classList.add('message');
+          messageDiv.innerHTML = messages[currentMessageIndex];
+          
+          messageDiv.style.top = `${Math.floor(Math.random() * 80) + 10}%`;
+          messageDiv.style.left = `${Math.floor(Math.random() * 80) + 10}%`;
+          
+          messageDiv.addEventListener('click', function() {
+            messagesContainer.removeChild(this);
+          });
+          
+          messagesContainer.appendChild(messageDiv);
+          currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+        }
+      });
+    </script>
+  </body>
+</html>
